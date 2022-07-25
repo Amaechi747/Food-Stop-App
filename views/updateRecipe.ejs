@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <title>FOOD-STOP By Moses |<%= title %></title>
+<body>
+  <%- include('./partials/navbar.ejs') %>
+  <div class="container-fluid">
+      <div class="col text-center py-3">
+        <h1>Update Recipe</h1>
+      </div>
+      <div class="row g-6" id="dataU">
+        <div class="col-6 offset-3 border-secondary shadow py-3 px-5 rounded">
+          <form class="form_container" id="add-formU" method="post" action="/recipes/<%=id%>?_method=PUT" enctype="application/x-www-form-urlencoded">
+            <div class="form-group mb-1">
+                <label for="idU" class="form-label"></label>
+                <div class="">
+                  <input type="id" class="form-control" id="idU" placeholder="id" name="id" value="<%=id%>"  disabled>
+                </div>
+              </div>
+            <div class="form-group mb-1">
+              <label for="name" class="form-label"></label>
+              <div class="">
+                <input type="name" class="form-control" id="titleU" placeholder="Title" name="title">
+              </div>
+            </div>
+            <div class="form-group mb-1">
+              <select id="meal-typeU">
+                <option>Meal Type</option>
+                <option value="breakfast">Breakfast</option>
+                <option value="lunch">Lunch</option>
+                <option value="supper">Supper</option>
+                <option value="snack">Snack</option>
+              </select>
+            </div>
+            <div class="form-group mb-1">
+              <select id="difficulty-levelU">
+                <option>Difficulty Level</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+              </select>
+            </div>
+            <div class="form-group mb-1">
+              <label for="ingredients-nameU" class="form-label"></label>
+              <div class="">
+                <input type="text" class="form-control" id="ingredients-nameU" placeholder="ingredients-name" name="ingredients-name">
+              </div>
+              <label for="ingredients-priceU" class="form-label"></label>
+              <div class="">
+                <input type="text" class="form-control" id="ingredients-priceU" placeholder="ingredients-price" name="ingredients-price">
+              </div>
+              <div class="">
+                <input type="submit" class="btn btn-danger" id="ingredients-submitU" placeholder="add" value="Add">
+              </div>
+            </div>
+            <div class="form-group mb-5">
+              <label for="preparation" class="form-label"></label>
+              <div class="">
+                <textarea type="text" class="form-control" id="preparationU" placeholder="preparation" name="preparation"></textarea>
+              </div>
+            </div>
+            <div class="form-group mb-3">
+              <div class="text-center">
+                <input type="submit" class="btn btn-primary" id="submitU" value="Add Recipe" >
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+  </div>
+    
+
+
+  <script src="/javascripts/updateForm.js"></script>
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
+
+

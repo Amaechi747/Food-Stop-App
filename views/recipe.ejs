@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <title>FOOD-STOP By Moses | <%= title %></title>
+<body>
+  <%- include('./partials/navbar.ejs') %>
+  <div class="container-fluid">
+  
+          <!-- Here it begins -->
+          <% if (recipes){ %>
+            <% for(let i = 0; i < recipes.length; i++){%>
+            <div class="card mb-3 border-primary" style="max-width: 1500px;">
+              <div class="row g-0">
+                <div class="col-md-4">
+                  <img src="/images/image2.jpeg" class="img-fluid rounded-start" style="width: 100%; height: 100%;" alt="...">
+                </div>
+                <div class="col-md-8">
+                  <div class="card-body">
+                    <h5 class="card-title">Title: <%= recipes[i].title %></h5>
+                    <p class="card-text">meal_type: <%= recipes[i].meal_type %></p>
+                    <p class="card-text">difficulty_level: <%= recipes[i].difficulty_level %></p>
+                    <p class="card-text" style=" color: blue; font:sans-serif">Ingredients</p>
+                    <% for(let j = 0; j < recipes[i].ingredients.length; j++){%>
+                      <p class="card-text">Name: <%= recipes[i].ingredients[j].name %> Price: <%= recipes[i].ingredients[j].price %></p>
+                    <% }%>
+                      <p class="card-text">Preparation: <%= recipes[i].preparation %> </p>
+                      <div>
+                        <a  href="/recipes/delete/<%= recipes[i]._id %>"> Delete </a>
+                        <a  href="/recipes/update/<%= recipes[i]._id %>"> Update </a>
+                        <a  href="/recipes/<%= recipes[i]._id %>"> Select </a>
+                    </div>
+                      <p class="card-text"><small class="text-muted">Last updated <%= recipes[i].updated_At %></small></p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% }%>
+          <% }%>
+          <% if(count === 0){%>
+            <div style="display: flex; color: blue; justify-content:center; align-self:center">
+              <h1 class="card-text"><small class="text-muted" >NO CONTENT HERE</small></h1>
+            </div>
+          <% } %>
+  </div>
+    
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
+
+
+
+
+
+

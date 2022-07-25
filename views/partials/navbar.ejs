@@ -1,0 +1,66 @@
+<nav class="navbar navbar-expand-lg bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">Welcome to The FOOD-STOP </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" style="margin: 0px 0px 0px calc(100vw - 70%);" id="navbarNav">
+        <ul class="navbar-nav">
+        <% try{ %>
+          <% if (!token){ %>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/login">Log In</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/user/register">Register</a>
+          </li>
+          <% }else if(token && user){ %>
+            <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/recipes">Home</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/user/logout">Log out</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/recipes/add_recipe">Add Recipe</a>
+            </li>
+                <% if (user){ %>
+            <li class="nav-item">      
+              <a class="btn btn-outline-primary" href="/recipes/add_recipe">Add Recipe</a>
+            </li>
+            <li class="nav-item">
+              <a class="btn btn-outline-secondary" href="#">Update Recipe</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link"><%= user %></a>
+            </li>
+            <% } %>
+          <% } %>
+        <% }catch(error){%>
+            <% console.log(error) %>
+        <% } %>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <% if(token){ %>
+    <div style="display: flex; justify-content: center; align-self: center">
+      <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item" id="pagePrev">
+            <a class="page-link" href="/recipes/previous" aria-label="Previous">
+              <span aria-hidden="true">&laquo;</span>
+            </a>
+          </li>
+          <li class="page-item" id="page1"><a class="page-link" href="/user/<%=1%>">1</a></li>
+          <li class="page-item" id="page2"><a class="page-link" href="/user/<%=2%>">2</a></li>
+          <li class="page-item" id="page3"><a class="page-link" href="/user/<%=3%>">3</a></li>
+          <li class="page-item" id="pageNext">
+            <a class="page-link" href="/recipes/next" aria-label="Next">
+              <span aria-hidden="true">&raquo;</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  <% } %>

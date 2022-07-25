@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%- include('./partials/head.ejs') %>
+  <title>FOOD-STOP By Moses |<%= title %></title>
+<body>
+  <%- include('./partials/navbar.ejs') %>
+  <div class="container-fluid">
+      <div class="col text-center py-3">
+        <h1><%= recipe.title%></h1>
+      </div>
+      <div class="row g-6">
+        <div class="col-6 offset-3 border-secondary shadow py-3 px-5 rounded">
+          <form class="form_container" method="get" action="/recipes/update/<%=recipe._id%>" enctype="application/x-www-form-urlencoded">
+
+            <div class="card text-center">
+                <div class="card-header">
+                  Details
+                </div>
+                <div class="card-body">
+                  <h5 class="card-title">Meal: <%= recipe.meal_type %></h5>
+                  <p class="card-text">Difficulty Level: <%= recipe.difficulty_level %></p>
+                  <p class="card-text" style="color: blue"> Ingredients </p>
+                  <% for (let i = 0; i <  recipe.ingredients.length; i++) {%>
+                    <p class="card-text"> Name: <%= recipe.ingredients[i].name  %> Price: <%= recipe.ingredients[i].price  %> </p> 
+                 
+                  <% } %>
+                  <p class="card-text">Preparation: <%= recipe.preparation %></p>
+                  <p class="card-text">Created: <%= recipe.created_At %></p>
+                  <p class="card-text">Last Update: <%= recipe.updated_At %> </p>
+                  <div class="form-group mb-3">
+                    <div class="text-center">
+                      <input type="submit" class="btn btn-primary" id="submit" value="Update" >
+                    </div>
+                  </div>
+                </div>
+                <div class="card-footer text-muted">
+                  Administrator: <%=user%>
+                </div>
+              </div>
+          </form>
+        </div>
+      </div>
+  </div>
+    
+
+ 
+
+
+
+  <%- include('./partials/footer.ejs') %>
+</body>
+</html>
+
